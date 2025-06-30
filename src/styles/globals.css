@@ -1,0 +1,93 @@
+@import './changelog-notification.css';
+@import './gradients.css';
+@import './marquee.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --card: 289 39% 99%;
+    --ring: 289 81% 52%;
+    --input: 220 13% 91%;
+    --muted: 289 36% 85%;
+    --accent: 289 1% 92%;
+    --border: 220 13% 91%;
+    --popover: 289 39% 99%;
+    --primary: 289 81% 52%;
+    --secondary: 289 1% 92%;
+    --background: 289 39% 99%;
+    --foreground: 289 60% 0%;
+    --destructive: 10 82% 22%;
+    --card-foreground: 289 60% 0%;
+    --muted-foreground: 289 14% 26%;
+    --accent-foreground: 289 1% 32%;
+    --popover-foreground: 289 60% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary-foreground: 289 1% 32%;
+    --destructive-foreground: 10 82% 82%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --card: 289 56% 3%;
+    --ring: 289 81% 52%;
+    --input: 215 27.9% 16.9%;
+    --muted: 289 36% 15%;
+    --accent: 289 20% 18%;
+    --border: 215 27.9% 16.9%;
+    --popover: 289 56% 3%;
+    --primary: 289 81% 52%;
+    --secondary: 289 20% 18%;
+    --background: 289 56% 3%;
+    --foreground: 289 33% 99%;
+    --destructive: 10 82% 48%;
+    --card-foreground: 289 33% 99%;
+    --muted-foreground: 289 14% 74%;
+    --accent-foreground: 289 20% 78%;
+    --popover-foreground: 289 33% 99%;
+    --primary-foreground: 0 0% 100%;
+    --secondary-foreground: 289 20% 78%;
+    --destructive-foreground: 0 0% 100%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+}
+
+@layer utilities {
+  .step {
+    counter-increment: step;
+  }
+
+  .step:before {
+    @apply absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 border-background bg-muted text-center -indent-px font-mono text-base font-medium;
+    @apply ml-[-50px] mt-[-4px];
+    content: counter(step);
+  }
+}
+
+/* 
+Coming soon to Tailwind CSS
+https://github.com/tailwindlabs/tailwindcss/pull/12128
+*/
+.break-anywhere {
+  overflow-wrap: anywhere;
+}
+.break-anywhere {
+  word-break: break-word;
+}
